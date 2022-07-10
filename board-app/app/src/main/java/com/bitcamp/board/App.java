@@ -11,7 +11,8 @@ public class App {
     System.out.println("환영합니다!");  
     System.out.println();
 
-    java.util.Scanner keyBoardInput = new java.util.Scanner(System.in);
+    java.io.InputStream keyboard = System.in;
+    java.util.Scanner keyBoardInput = new java.util.Scanner(keyboard);
 
     while(true) {
       System.out.println("메뉴:");
