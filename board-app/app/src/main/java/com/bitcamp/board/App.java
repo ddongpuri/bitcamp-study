@@ -4,60 +4,113 @@
  */
 package com.bitcamp.board;
 
+import java.util.Stack;
+import com.bitcamp.board.handler.BoardHandler;
+import com.bitcamp.board.handler.MemberHandler;
+import com.bitcamp.handler.Handler;
+import com.bitcamp.util.Prompt;
+
 public class App {
+
+  // breadcrumb 메뉴를 저장할 스택을 준비
+  public static Stack<String> breadcrumbMenu = new Stack<>();
+
   public static void main(String[] args) {
-    System.out.println("[게시판 애플리케이션!]");
+    try {
+      welcome();
+
+      // 핸들러를 담을 레퍼런스 배열을 준비한다.
+      Handler[] handlers = new Handler[] {
+          new BoardHandler("board.csv"), // 게시판
+          new BoardHandler("reading.csv"), // 독서록
+          new BoardHandler("visit.csv"), // 방명록
+          new BoardHandler("notice.csv"), // 공지사항
+          new BoardHandler("daily.csv"), // 일기장
+          new MemberHandler("member.csv") // 회원
+      };
+
+      // "메인" 메뉴의 이름을 스택에 등록한다.
+      breadcrumbMenu.push("메인");
+
+      // 메뉴명을 저장할 배열을 준비한다.
+      String[] menus = {"게시판", "독서록", "방명록", "공지사항", "일기장", "회원"};
+
+      loop: while (true) {
+
+        printTitle();
+        printMenus(menus);
+        System.out.println();
+
+        try {
+          int mainMenuNo = Prompt.inputInt("메뉴를 선택하세요[1..6](0: 종료) ");
+
+          if (mainMenuNo < 0 || mainMenuNo > menus.length) {
+            System.out.println("메뉴 번호가 옳지 않습니다!");
+            continue; // while 문의 조건 검사로 보낸다.
+
+          } else if (mainMenuNo == 0) {
+            break loop;
+          }
+
+          // 메뉴에 진입할 때 breadcrumb 메뉴바에 그 메뉴를 등록한다.
+          breadcrumbMenu.push(menus[mainMenuNo - 1]);
+
+          // 메뉴 번호로 Handler 레퍼런스에 들어있는 객체를 찾아 실행한다.
+          handlers[mainMenuNo - 1].execute();
+
+          breadcrumbMenu.pop();
+
+        } catch (Exception ex) {
+          System.out.println("입력 값이 옳지 않습니다.");
+        }
+
+
+      } // while
+
+      Prompt.close();
+
+    } catch (Exception e) {
+      // 더이상 애플리케이션을 계속 실행할 수 없는 상황일 때,
+      // (main() 메서드까지 예외 보고가 올라 왔다는 것은 계속 실행할 수 없는 상태라는 뜻이다)
+      // 사용자에게 간단한 예외 메시지를 남기고
+      // 필요하다면 로그 파일에 오류 기록을 남기고,
+      // 실행을 종료한다.
+      System.out.printf("실행 오류 발생! - %s:%s\n", 
+          e.getClass().getName(), 
+          e.getMessage() != null ? e.getMessage() : "");
+    }
+
+    System.out.println("안녕히 가세요!");
+  } // main
+
+  static void welcome() {
+    System.out.println("[게시판 애플리케이션]");
     System.out.println();
-    System.out.println("환영합니다!");  
+    System.out.println("환영합니다!");
     System.out.println();
+  }
 
-    java.io.InputStream keyboard = System.in;
-    java.util.Scanner keyBoardInput = new java.util.Scanner(keyboard);
+  static void printMenus(String[] menus) {
+    for (int i = 0; i < menus.length; i++) {
+      System.out.printf("  %d: %s\n", i + 1, menus[i]);
+    }
+  }
 
-    while(true) {
-      System.out.println("메뉴:");
-      System.out.println("  1: 게시글 목록");
-      System.out.println("  2: 게시글 상세보기");
-      System.out.println();
-      System.out.print("메뉴를 선택하세요[1..2](0: 종료) ");
-      
-      int menuNo = keyBoardInput.nextInt(); //값을 반환해주는 expression
-      keyBoardInput.nextLine(); // 입력한 숫자 뒤에 남아있는 줄바꿈 코드 제거
-      
-      if (menuNo == 0) {
-        break;
-      } else if (menuNo == 1) {
-        System.out.println("[번호 제목 조회수 작성자 등록일]");
-        System.out.print(1);
-        System.out.print("\t");
-        System.out.print("제목입니다1");
-        System.out.print('\t');
-        System.out.print(20+"\t");
-        System.out.print("홍길동\t");
-        System.out.print("2022-07-08\r\n");
-
-        System.out.print(2 + "\t" + "제목입니다2\t" + 
-          11 + "\t" + "홍길동\t" + "2022-07-08\n");
-        
-        System.out.print(3 + "\t" + "제목입니다3\t" + 
-          13 + "\t" + "임꺽정\t" + "2022-07-08\n");
-
-        System.out.printf("%d\t%s\t%d\t%s\t%s\n", 
-          4, "제목입니다4", 45, "유관순", "2022-07-08");
-      } else if (menuNo == 2) {
-          System.out.println("[게시판 상세보기]");
-
-          System.out.printf("  번호: %d\n", 1);
-          System.out.printf("  제목: %s\n","제목입니다1.");
-          System.out.printf("  내용: %s\n","내용입니다.");
-          System.out.printf("  조회수: %d\n", 100);
-          System.out.printf("  작성자: %s\n", "홍길동");
-          System.out.printf("  등록일: %s\n", "2022-07-08");    
-      } else {
-          System.out.println("메뉴 번호가 옳지 않습니다!");
+  protected static void printTitle() {
+    StringBuilder builder = new StringBuilder();
+    for (String title : App.breadcrumbMenu) {
+      if (!builder.isEmpty()) {
+        builder.append(" > ");
       }
-    } //while 끝
-    System.out.println("안녕히가세요!");
-    keyBoardInput.close();
+      builder.append(title);
+    }
+    System.out.printf("%s:\n", builder.toString());
   }
 }
+
+
+
+
+
+
+
