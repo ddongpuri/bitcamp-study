@@ -8,4 +8,7 @@
  */
 
 rootProject.name = 'board-app'
-include('app')
+// include('app')
+include('app-client')
+include('app-server')
+// 위 두개만 서브 프로젝트로 인식하겠다! 

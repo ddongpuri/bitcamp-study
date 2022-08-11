@@ -34,6 +34,7 @@ public class Test23 {
         answer += (ch - '0');
       }
     }
+    System.out.println('a' < 1);
     return answer;
   }
 }
