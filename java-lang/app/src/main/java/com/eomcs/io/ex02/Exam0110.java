@@ -1,6 +1,7 @@
 // Byte Stream - 바이트 단위로 출력하기
 package com.eomcs.io.ex02;
 
+import java.io.File;
 import java.io.FileOutputStream;
 
 public class Exam0110 {
@@ -16,7 +17,7 @@ public class Exam0110 {
     //   - 리눅스,유닉스: / 로 시작하지 않으면,
     //   - 윈도우: c:\, d:\ 등으로 시작하지 않으면,
     //   현재 디렉토리가 기준이 된다.
-    FileOutputStream out = new FileOutputStream("temp/test1.data");
+    FileOutputStream out = new FileOutputStream(new File("temp/test1.data"));
 
     // 2) 1바이트를 출력한다.
     // => write(int) : 1바이트를 출력하는 메서드이다.
