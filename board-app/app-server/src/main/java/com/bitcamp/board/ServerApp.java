@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import com.bitcamp.board.servlet.BoardServlet;
+import com.bitcamp.board.servlet.MemberServlet;
 
 public class ServerApp {
 
@@ -23,7 +24,7 @@ public class ServerApp {
           // => 클라이언트와 연결되면 그 클라이언트와 통신할 준비를 한다.
           //    즉 Socket 객체 리턴 
           // => 클라이언트와 연결될 때까지 리턴하지 않는다. 
-          Socket socket = serverSocket.accept();
+          Socket socket = serverSocket.accept(); // 클라이언트의 연결을 대기중 
 
 
           // 클라이언트와 데이터를 주고 받는다. 
@@ -47,22 +48,25 @@ public class ServerApp {
         BoardServlet visitServlet = new BoardServlet("visit");
         BoardServlet noticeServlet = new BoardServlet("notice");
         BoardServlet dailyServlet = new BoardServlet("daily");
+        MemberServlet memberServlet = new MemberServlet("member");
+        //        HashMap<String,Servlet> servletMap = new HashMap<>();
 
 
         while (true) {
 
-          String dataName = in.readUTF(); 
+          String dataName = in.readUTF(); // Client로부터 dataName을 입력받은 
 
-          if (dataName.equals("exit")) {
+          if (dataName.equals("exit")) { // 만약 exit이면, while문을 나가고, 서버 연결 끊긴다. 
             break;
           }
 
-          switch (dataName) {
+          switch (dataName) { // 일단 dataName이 exit 가 아니면,            
             case "board": boardServlet.service(in, out); break;
             case "reading": readingServlet.service(in, out); break;
             case "visit": visitServlet.service(in, out); break;
             case "notice": noticeServlet.service(in, out); break;
             case "daily": dailyServlet.service(in, out); break;
+            case "member": memberServlet.service(in, out); break;
             default: 
               out.writeUTF("fail");
           }

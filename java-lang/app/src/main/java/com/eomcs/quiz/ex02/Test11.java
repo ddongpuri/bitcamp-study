@@ -1,6 +1,7 @@
 package com.eomcs.quiz.ex02;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 
 // copyright by codefights.com
 // 
@@ -36,17 +37,15 @@ public class Test11 {
   }
 
   static boolean rightTriangle(int[] sides) {
-    Arrays.sort(sides);
 
-    int a = sides[0];
-    int b = sides[1];
-    int c = sides[2];
-
-    if ((a * a) + (b * b) == c * c) {
-      return true;
+    ArrayList<Integer> list = new ArrayList<>();
+    for (int i : sides) {
+      list.add(i);
     }
+    Collections.sort(list);
 
-    return false;
+    return list.get(0) * list.get(0) + list.get(1) * list.get(1) == list.get(2) * list.get(2);
+
   }
 }
 
