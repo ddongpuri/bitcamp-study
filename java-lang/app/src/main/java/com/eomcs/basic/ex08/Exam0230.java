@@ -20,8 +20,8 @@ public class Exam0230 {
 
     for (Entry<String,Member> entry : entrySet) {
       System.out.printf("%s ===> %s\n",
-          entry.getKey(),
-          entry.getValue());
+          entry.getKey(), // 키꺼내고 싶어 
+          entry.getValue()); // 값 꺼내고 싶어 
     }
 
   }

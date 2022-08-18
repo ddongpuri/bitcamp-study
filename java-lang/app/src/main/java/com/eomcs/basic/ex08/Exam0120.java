@@ -22,6 +22,7 @@ public class Exam0120 {
       }
     }
 
+    // key 객체를 만든다. 
     MyKey k1 = new MyKey("컴공", 1);
     MyKey k2 = new MyKey("컴공", 2);
     MyKey k3 = new MyKey("컴공", 3);
@@ -48,7 +49,11 @@ public class Exam0120 {
     MyKey k6 = new MyKey("컴공", 3);
 
     System.out.println(k3 == k6);
+
+    // MyKey 클래스는 equals()를 오버라이딩 하지 않았음. Object 거 그대로 쓴다. 
     System.out.printf("equals(): %b\n", k3.equals(k6));
+
+
     System.out.printf("hashCode(): %d, %d\n", k3.hashCode(), k6.hashCode());
     System.out.println("-----------------------------------");
 

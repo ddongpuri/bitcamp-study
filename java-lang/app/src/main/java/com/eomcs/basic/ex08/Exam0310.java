@@ -15,6 +15,7 @@ public class Exam0310 {
     map.put("s05", new Member("윤봉길", 30));
 
     Set<String> keys = map.keySet();
+    // (중요)
     // keySet() 이 리턴하는 것은 HashMap의 key 목록을 다루는 객체이다.
     // 별도로 key 목록을 만들어 리턴하지 않는다.
 

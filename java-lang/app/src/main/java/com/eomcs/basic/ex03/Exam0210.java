@@ -58,7 +58,9 @@ public class Exam0210 {
     list.add(m2);
     list.add(m3);
 
+
     for (int i = 0; i < list.size(); i++) {
+      // list의 i번째 인덱스에 담긴 주소값을 m에 복사한다. 
       Member m = list.get(i);
       System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);
     }

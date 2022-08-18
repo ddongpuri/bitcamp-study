@@ -29,6 +29,7 @@ public class Exam0210 {
     // 2) 배열을 사용
     String[] keyArray = new String[keys.size()];
     keys.toArray(keyArray);
+
     for (String key : keyArray) {
       System.out.println(map.get(key)); // key를 사용하여 값을 꺼낸다.
     }

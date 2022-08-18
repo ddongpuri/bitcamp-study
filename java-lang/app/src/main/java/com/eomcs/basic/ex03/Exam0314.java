@@ -13,7 +13,7 @@ public class Exam0314 {
     @Override
     public Iterator<E> iterator() {
       class MyListIterator implements Iterator<E> {
-        MyList<E> myList;
+        MyList<E> myList; // 바깥 클래스 객체 주소를 받기 위한 필드 
         int cursor;
 
         public MyListIterator(MyList<E> myList) {
@@ -31,7 +31,7 @@ public class Exam0314 {
           return myList.get(cursor++);
         }
       }
-      return new MyListIterator(this);
+      return new MyListIterator(this); // MyList 객체 주소 넘겨줌 
     }
 
     public void add(E value) {

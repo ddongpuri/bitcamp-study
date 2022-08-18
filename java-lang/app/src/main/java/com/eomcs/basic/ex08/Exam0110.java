@@ -7,6 +7,8 @@ public class Exam0110 {
   public static void main(String[] args) {
     // java.util.Map 구현체
     // - HashMap, Hashtable 이 있다.
+    // HashMap은 키와 value에 null이 올 수 있다. 
+    // Hashtable은 키와 value에 null이 올 수 없다. 
     // - key를 가지고 value을 저장하고 꺼낸다.
     //
     HashMap<String,Member> map = new HashMap<>();
@@ -16,7 +18,8 @@ public class Exam0110 {
     // - 이 해시값을 가지고 저장할 위치를 결정한다.
     //
     map.put("s01", new Member("홍길동", 20));
-    // 1) "s01" String 객체에 대해 hashCode()를 호출하여 해시 값을 얻는다.
+    // Wrapper클래스와 String 클래스를 보통 키 값으로 많이 사용한다. 
+    // 1) "s01" String 객체에 대해 hashCode()를 호출하여 (키 객체의)해시 값을 얻는다.
     // 2) 그 해시 값을 사용하여 저장할 위치를 결정한다.
     // 3) 해당 위치에 Member 객체(의 주소)를 저장한다.
 

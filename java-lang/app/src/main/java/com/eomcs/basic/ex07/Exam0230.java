@@ -14,7 +14,7 @@ public class Exam0230 {
     set.add("eee");
 
     // Iterable 구현체라면 다음과 같이 for(:)를 사용하여 값을 조회할 수 있다.
-    for (String s : set) {
+    for (String s : set) { 
       System.out.print(s + ", ");
     }
     System.out.println();

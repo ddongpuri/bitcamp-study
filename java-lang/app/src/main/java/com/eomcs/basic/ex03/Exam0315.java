@@ -13,11 +13,15 @@ public class Exam0315 {
     @Override
     public Iterator<E> iterator() {
       class MyListIterator implements Iterator<E> {
+        // 로컬 클래스의 경우, 
+        // 바깥 클래스의 객체주소를 받는 필드가 자동생성됨.
+
+
         int cursor;
 
         @Override
         public boolean hasNext() {
-          return cursor < size;
+          return cursor < MyList.this.size;
         }
         @Override
         public E next() {
@@ -86,6 +90,10 @@ public class Exam0315 {
     for (Member m : list) {
       System.out.printf("이름: %s, 나이: %d\n", m.name, m.age);
     }
+
+    // 위 반복문은 컴파일 될 떄 다음 문장으로 변환된다.
+    //    Iterator<Member>
+
   }
 }
 

@@ -18,6 +18,9 @@ public class Exam0220 {
     // value 객체는 중복 저장될 수 있기 때문에
     // value 객체 목록은 Collection 에 담아서 리턴한다.
     //
+
+    // Collection인터페이스는 Iterable 인터페이스를 상속받음.
+    // 따라서, Collection인터페이스 구현체는 for문 자리에 올 수 있음 
     java.util.Collection<Member> values = map.values();
     for (Member value : values) {
       System.out.println(value);

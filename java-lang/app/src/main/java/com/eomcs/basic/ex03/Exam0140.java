@@ -63,13 +63,13 @@ public class Exam0140 {
     // - 목록에 같은 값을 가진 객체의 인덱스를 알아낸다.
     // - 값을 비교할 때는 contains()와 마찬가지로
     //   equals()의 리턴 값이 true인 경우 같은 값으로 간주한다.
-    //
+    //  Member m3 = new Member("유관순", 17);
     Member m4 = new Member("유관순", 17);
     System.out.println(list.indexOf(m4)); // 2
 
-    System.out.println(m2 == m4);
-    System.out.println(m2.equals(m4));
-    System.out.println(m2.hashCode() == m4.hashCode());
+    System.out.println(m3 == m4);
+    System.out.println(m3.equals(m4));
+    System.out.println(m3.hashCode() == m4.hashCode());
 
   }
 }

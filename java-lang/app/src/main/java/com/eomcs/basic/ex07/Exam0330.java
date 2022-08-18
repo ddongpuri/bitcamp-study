@@ -35,11 +35,11 @@ public class Exam0330 {
     Member v4 = new Member("안중근", 20);
     Member v5 = new Member("유관순", 16);
 
-    System.out.println(v1.hashCode());
-    System.out.println(v2.hashCode());
-    System.out.println(v3.hashCode());
-    System.out.println(v4.hashCode());
-    System.out.println(v5.hashCode());
+    System.out.println("v1의 해시코드 : " + v1.hashCode());
+    System.out.println("v2의 해시코드 : " + v2.hashCode());
+    System.out.println("v3의 해시코드 : " + v3.hashCode());
+    System.out.println("v4의 해시코드 : " + v4.hashCode());
+    System.out.println("v5의 해시코드 : " + v5.hashCode());
 
     HashSet<Member> set = new HashSet<>();
     set.add(v1);
