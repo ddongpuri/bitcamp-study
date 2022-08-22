@@ -14,8 +14,6 @@ import com.google.gson.Gson;
 public class BoardDao {
 
   List<Board> list = new LinkedList<>();
-
-
   private int boardNo = 0;
   String filename;
 
@@ -25,7 +23,8 @@ public class BoardDao {
 
   public void load() throws Exception {
     try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
-      // 파일에서 JSON 문자열을 모두 읽어 StringBuilder에 담는다. 
+
+      // 파일에서 JSON 문자열을 모두 읽어 StringBuilder에 담는다.
       StringBuilder strBuilder = new StringBuilder();
       String str;
       while ((str = in.readLine()) != null) {
@@ -35,11 +34,12 @@ public class BoardDao {
       // StringBuilder에 보관된 JSON 문자열을 가지고 Board[] 을 생성한다. 
       Board[] arr = new Gson().fromJson(strBuilder.toString(), Board[].class);
 
-      // Board[] 배열의 저장된 객체를 List로 옮긴다. 
-      for (int i = 0 ; i < arr.length; i++) {
+      // Board[] 배열의 저장된 객체를 List 로 옮긴다.
+      for (int i = 0; i < arr.length; i++) {
         list.add(arr[i]);
       }
-      // 게시글 데이터를 로딩한 후 마지막 게시글 번호를 설정해 둔다 .
+
+      // 게시글 데이터를 로딩한 후 마지막 게시글 번호를 설정해 둔다.
       boardNo = arr[arr.length - 1].no;
     }
   }
@@ -47,10 +47,7 @@ public class BoardDao {
   public void save() throws Exception {
     try (FileWriter out = new FileWriter(filename)) {
       Board[] boards = list.toArray(new Board[0]);
-
-      // Gson 객체를 만들자마자,toJson 호출 
       out.write(new Gson().toJson(boards));
-
     }
   }
 

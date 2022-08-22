@@ -28,21 +28,21 @@ public class MemberServlet implements Servlet {
   }
 
   @Override
-  public void service(DataInputStream in, DataOutputStream out) { // signature가 같다. 
+  public void service(DataInputStream in, DataOutputStream out) {
     try {
 
       String command = in.readUTF();
-      Member member = null;
+      com.bitcamp.board.domain.Member member = null;
       String email = null;
       String json = null;
 
       switch (command) {
-        case "findAll": 
+        case "findAll":
           Member[] members = memberDao.findAll();
           out.writeUTF(SUCCESS);
           out.writeUTF(new Gson().toJson(members));
           break;
-        case "fineByEmail":
+        case "findByEmail":
           email = in.readUTF();
           member = memberDao.findByEmail(email);
           if (member != null) {
@@ -56,23 +56,22 @@ public class MemberServlet implements Servlet {
           json = in.readUTF();
           member = new Gson().fromJson(json, Member.class);
           memberDao.insert(member);
-          memberDao.save(); 
-
+          memberDao.save();
           out.writeUTF(SUCCESS);
           break;
-        case "delete" : 
-          email = in.readUTF();
-          if (memberDao.delete(email)) {
+        case "update": 
+          json = in.readUTF();
+          member = new Gson().fromJson(json, Member.class);
+          if (memberDao.update(member)) {
             memberDao.save();
             out.writeUTF(SUCCESS);
           } else {
             out.writeUTF(FAIL);
           }
           break;
-        case "update": 
-          json = in.readUTF();
-          member = new Gson().fromJson(json, Member.class);
-          if (memberDao.update(member)) {
+        case "delete": 
+          email = in.readUTF();
+          if (memberDao.delete(email)) {
             memberDao.save();
             out.writeUTF(SUCCESS);
           } else {
@@ -85,7 +84,6 @@ public class MemberServlet implements Servlet {
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
-
   }
 }
 

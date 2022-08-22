@@ -1,5 +1,5 @@
 /*
- * board 데이터 처리 
+ * board 데이터 처리
  */
 package com.bitcamp.board.servlet;
 
@@ -18,7 +18,7 @@ public class BoardServlet implements Servlet {
 
   public BoardServlet(String dataName) {
     filename = dataName + ".json";
-    boardDao = new BoardDao(filename); 
+    boardDao = new BoardDao(filename);
 
     try {
       boardDao.load();
@@ -38,12 +38,12 @@ public class BoardServlet implements Servlet {
       String json = null;
 
       switch (command) {
-        case "findAll": 
+        case "findAll":
           Board[] boards = boardDao.findAll();
           out.writeUTF(SUCCESS);
           out.writeUTF(new Gson().toJson(boards));
           break;
-        case "fineByNo":
+        case "findByNo":
           no = in.readInt();
           board = boardDao.findByNo(no);
           if (board != null) {
@@ -57,23 +57,22 @@ public class BoardServlet implements Servlet {
           json = in.readUTF();
           board = new Gson().fromJson(json, Board.class);
           boardDao.insert(board);
-          boardDao.save(); 
-
+          boardDao.save();
           out.writeUTF(SUCCESS);
           break;
-        case "delete" : 
-          no = in.readInt();
-          if (boardDao.delete(no)) {
+        case "update": 
+          json = in.readUTF();
+          board = new Gson().fromJson(json, Board.class);
+          if (boardDao.update(board)) {
             boardDao.save();
             out.writeUTF(SUCCESS);
           } else {
             out.writeUTF(FAIL);
           }
           break;
-        case "update": 
-          json = in.readUTF();
-          board = new Gson().fromJson(json, Board.class);
-          if (boardDao.update(board)) {
+        case "delete": 
+          no = in.readInt();
+          if (boardDao.delete(no)) {
             boardDao.save();
             out.writeUTF(SUCCESS);
           } else {
@@ -87,8 +86,6 @@ public class BoardServlet implements Servlet {
       throw new RuntimeException(e);
     }
   }
-
-
 }
 
 

@@ -16,6 +16,7 @@ public class Receiver2 {
     ServerSocket serverSocket = new ServerSocket(8888);
     Socket socket = serverSocket.accept();
 
+    // 클라이언트와 대화를 나눌 수 있는 입출력 도구 준비! 
     PrintStream out = new PrintStream(socket.getOutputStream());
     Scanner in = new Scanner(socket.getInputStream());
 

@@ -29,6 +29,7 @@ public class Receiver4 {
     String filename = in.readUTF();
 
     //3) 파일 데이터 읽기
+    // File : 파일 정보 다루는 클래스 
     File file = new File("temp/ok_" + filename);
     FileOutputStream fileOut = new FileOutputStream(file);
 
