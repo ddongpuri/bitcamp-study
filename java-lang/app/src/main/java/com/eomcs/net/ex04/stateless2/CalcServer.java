@@ -12,6 +12,7 @@ public class CalcServer {
 
   // 각 클라이언트의 작업 결과를 보관할 맵 객체
   // => Map<clientID, result>
+  // 클래스 로딩시 한 번 만들어지는 static 변수이다. 
   static Map<Long, Integer> resultMap = new HashMap<>();
 
   public static void main(String[] args) throws Exception {
@@ -74,7 +75,7 @@ public class CalcServer {
           result *= value;
           break;
         case "/":
-          Thread.sleep(10000);
+          Thread.sleep(30000);
           result /= value;
           break;
         default:

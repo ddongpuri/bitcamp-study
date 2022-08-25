@@ -1,3 +1,4 @@
+// Server0120 을 강제로 종료해야 함 
 // 통신 방식 - Stateful + 서버 종료
 package com.eomcs.net.ex04;
 

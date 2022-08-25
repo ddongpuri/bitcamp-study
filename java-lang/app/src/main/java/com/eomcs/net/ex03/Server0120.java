@@ -23,9 +23,11 @@ public class Server0120 {
 
         System.out.println("클라이언트가 보낸 100바이트를 기다리고 있음!");
         // => 클라이언트가 100바이트를 보낼 때까지 리턴하지 않는다.
-        byte[] buf = new byte[100];
+        byte[] buf = new byte[100]; // 클라이언트가 보낼 100바이트를 저장할 저장공간 마련 
         int size = in.read(buf);
         System.out.printf("읽은 바이트 수: %d\n", size);
+        // Reads some number of bytes from the input stream and stores them into the buffer array b. 
+        // The number of bytes actually read is returned as an integer.
 
         for (int i = 0; i < size; i++) {
           if (i > 0 && (i % 20) == 0) {

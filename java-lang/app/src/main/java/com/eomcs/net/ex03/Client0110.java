@@ -46,7 +46,7 @@ public class Client0110 {
       // - 서버가 응답을 할 때까지 리턴하지 않는다.
       // 즉 blocking 모드로 작동한다.
       int response = in.read();
-      System.out.println(response);
+      System.out.println("서버가 보낸 응답 : " + response);
 
     } catch (Exception e) {
       e.printStackTrace();
@@ -55,6 +55,7 @@ public class Client0110 {
       try {out.close();} catch (Exception e) {}
       try {in.close();} catch (Exception e) {}
       try {socket.close();} catch (Exception e) {}
+      // 하나의 try로 묶지 않는 것은, 만약 닫다가 예외가 발생하면 다음 닫는 코드가 실행되지 않기 떄문에 각각 try를 적어준 것이다. 
     }
 
     keyScan.close();

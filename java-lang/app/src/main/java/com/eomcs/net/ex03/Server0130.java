@@ -15,6 +15,8 @@ public class Server0130 {
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
       try (Socket socket = serverSocket.accept();
+          // 입출력 스트림에 decorator를 붙여서 더 편하게 사용할 수 있다. 
+          // 중간에서 데이터 가공 역할을 해주는 decorator 
           DataOutputStream out = new DataOutputStream(socket.getOutputStream());
           DataInputStream in = new DataInputStream(socket.getInputStream())) {
 

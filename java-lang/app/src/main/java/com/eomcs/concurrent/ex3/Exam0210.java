@@ -22,7 +22,7 @@ public class Exam0210 {
     // 스레드 실행하기
     // => Runnable 구현체를 Thread 객체에 실어서 실행한다.
     // => start()를 호출하여 기존 스레드에서 분리하여 스레드를 실행시킨다.
-    Thread t = new Thread(new MyRunnable());
+    Thread t = new Thread(new MyRunnable()); // 스레드 생성시, 파라미터로 runnable 인터페이스의 구현체 넘겨준다. 
     t.start(); // 실행 흐름을 분리한 후 즉시 리턴한다.
 
     // "main" 스레드는 Thread와 상관없이 병행하여 실행한다.

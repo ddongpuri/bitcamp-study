@@ -16,6 +16,7 @@ public class Server0160 {
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
       try (Socket socket = serverSocket.accept();
+          // 입출력 스트림에 버퍼 먼저 꽂고, 그리고 Scanner든 PrintStream 이든 꽂아 준다. 
           Scanner in = new Scanner(new BufferedInputStream(socket.getInputStream()));
           PrintStream out = new PrintStream(new BufferedOutputStream(socket.getOutputStream()))) {
 

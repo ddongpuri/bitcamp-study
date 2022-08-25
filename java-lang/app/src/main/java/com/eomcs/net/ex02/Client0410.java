@@ -18,7 +18,7 @@ public class Client0410 {
     SocketAddress socketAddress = new InetSocketAddress("localhost", 8888);
 
     System.out.println("서버와 연결 중...");
-    socket.connect(socketAddress, 10000);
+    socket.connect(socketAddress, 50000); // 10초간 기다린다. 
     System.out.println("서버와 연결되었음!");
 
     keyScan.nextLine();

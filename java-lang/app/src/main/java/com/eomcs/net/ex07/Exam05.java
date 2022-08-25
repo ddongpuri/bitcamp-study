@@ -1,4 +1,5 @@
 // URL(Uniform Resource Locator) - Windows OS의 로컬 파일 경로
+// URL은 로컬 자원의 경로도 가리킬 수 있다. 
 package com.eomcs.net.ex07;
 
 import java.net.URL;

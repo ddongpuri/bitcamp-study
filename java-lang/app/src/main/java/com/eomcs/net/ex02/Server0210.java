@@ -20,8 +20,9 @@ public class Server0210 {
     //    예외를 던지고 연결 요청을 취소한다.
     // => new ServerSocket(포트번호, 대기열크기);
     //    다음과 같이 대기열의 개수를 지정하지 않으면, 기본이 50개이다.
+    //    (기본으로 설정되어 있는 대기열의 개수는 OS마다 다를 수 있음)
     //
-    ServerSocket ss = new ServerSocket(8888);
+    ServerSocket ss = new ServerSocket(8888, 3);
     System.out.println("서버 소켓 생성 완료!");
     System.out.println("클라이언트 연결을 기다리는 중...");
 

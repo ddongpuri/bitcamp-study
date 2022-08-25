@@ -25,7 +25,7 @@ public class Server0110 {
       try {
         // accept()
         // - 대기열에서 클라이언트 정보를 한 개 꺼내 소켓을 만들어 클라이언트와 연결한다.
-        // - 만약 대기열에 클라이언트 정보가 없다면 클라이언트가 접속할 때까지 기다리다.
+        // - 만약 대기열에 클라이언트 정보가 없다면 클라이언트가 접속할 때까지 대기한다.
         socket = serverSocket.accept();
         System.out.println("대기열에서 클라이언트 정보를 꺼내 소켓을 생성하였음.");
 
@@ -53,7 +53,7 @@ public class Server0110 {
         // => 클라이언트가 1바이트를 보낼 때까지 리턴하지 않는다.
         int request = in.read(); // blocking 모드로 작동한다.
 
-        System.out.println(request);
+        System.out.println("클라이언트가 보내씀 : " + request);
 
         // 서버가 데이터를 보내지 않으면 클라이언트의 read()는 리턴하지 않는다.
         // 이를 확인하기 위해 잠시 실행을 멈춘다.

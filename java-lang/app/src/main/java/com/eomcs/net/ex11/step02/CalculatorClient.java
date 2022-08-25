@@ -20,6 +20,13 @@ public class CalculatorClient {
         if (input.length() == 0) {
           // 빈 줄을 읽었다면 읽기를 끝낸다.
           break;
+          //서버 쪽에서 출력한 데이터 
+          //          out.println("[계산기 서비스]");
+          //          out.println("계산기 서버에 오신 걸 환영합니다!");
+          //          out.println("계산식을 입력하세요!");
+          //          out.println("예) 23 + 7");
+          //          out.println(); // 응답의 끝을 표시하는 빈 줄을 보낸다.
+
         }
         System.out.println(input);
       }

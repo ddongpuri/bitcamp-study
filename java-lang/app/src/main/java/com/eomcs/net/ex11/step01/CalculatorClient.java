@@ -9,7 +9,7 @@ import java.net.Socket;
 public class CalculatorClient {
   public static void main(String[] args) {
 
-    try (Socket socket = new Socket("localhost", 8888);
+    try (Socket socket = new Socket("localhost", 8888); // 소켓 연결 
         PrintStream out = new PrintStream(socket.getOutputStream());
         BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
 

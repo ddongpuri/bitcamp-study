@@ -10,12 +10,12 @@ import java.net.Socket;
 public class CalculatorServer {
   public static void main(String[] args) {
 
-    try (ServerSocket serverSocket = new ServerSocket(8888)) {
+    try (ServerSocket serverSocket = new ServerSocket(8888)) { // 서버 소켓 준비 
       System.out.println("서버 실행 중...");
 
-      try (Socket socket = serverSocket.accept();
-          BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-          PrintStream out = new PrintStream(socket.getOutputStream());) {
+      try (Socket socket = serverSocket.accept(); // 클라이언트 승인 
+          BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream())); // 읽을 도구 준비 
+          PrintStream out = new PrintStream(socket.getOutputStream());) { // 출력 도구 준비 
 
         out.println("계산기 서버에 오신 걸 환영합니다!");
         out.println("계산식을 입력하세요!");

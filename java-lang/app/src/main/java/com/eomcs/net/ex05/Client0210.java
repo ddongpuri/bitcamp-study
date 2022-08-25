@@ -27,6 +27,7 @@ public class Client0210 {
     //    String message = "Hello"; // constant pool에 String 객체 생성
     //    byte[] bytes = message.getBytes("UTF-8");
     byte[] bytes = "Hello".getBytes("UTF-8");
+    // "Hello"가 어떻게 문자열이야? String 객체지! 
 
     // 보낼 데이터를 패킷에 담는다.
     // => 패킷 = 데이터 + 데이터크기 + 받는이의 주소 + 받는이의 포트번호

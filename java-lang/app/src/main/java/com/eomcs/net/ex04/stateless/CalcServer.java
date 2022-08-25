@@ -26,7 +26,7 @@ public class CalcServer {
   }
 
   static void processRequest(Socket socket) throws Exception {
-    try (Socket socket2 = socket;
+    try (Socket socket2 = socket; // close 자동호출되게 하려고 이렇게 여기다가 써준거야~ 
         DataInputStream in = new DataInputStream(socket.getInputStream());
         PrintStream out = new PrintStream(socket.getOutputStream());) {
 

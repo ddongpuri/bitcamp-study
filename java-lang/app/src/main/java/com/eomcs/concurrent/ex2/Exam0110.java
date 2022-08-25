@@ -9,7 +9,8 @@ public class Exam0110 {
     // 확인해보자!
 
     // 이 순간 실행 중인 흐름이 무엇인지 알고 싶다면?
-    Thread t = Thread.currentThread();
+    // 스레드  = 독립적인 실행흐름 
+    Thread t = Thread.currentThread(); // 이 순간, 이 문장을 실행하는 스레드를  알아낼 수 있다. 
 
     System.out.println("실행 흐름명 = " + t.getName());
 

@@ -22,7 +22,8 @@ public class Server0410 {
     // => 클라이언트가 서버에 연결을 요청하면, 서버는 대기열에 추가한다.
     // => 서버소켓에서 연결을 승인하면 클라이언트와 통신할 수 있는 소켓을 리턴한다.
     // => 대기열에 기다리고 있는 클라이언트가 없으면 접속할 때까지 기다린다.
-    Socket socket = ss.accept();
+
+    Socket socket = ss.accept(); // 대기열에 대기가 있나 쳐다보고 있음
     System.out.println("대기 중인 클라이언트 중 한 개의 클라이언트에 대해 연결 승인!");
 
     keyboard.nextLine();

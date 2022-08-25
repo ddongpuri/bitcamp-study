@@ -16,6 +16,8 @@ public class Server0120 {
       System.out.println("서버 실행!");
 
       while (true) {
+        //  while문으로 한번더 감싸서 클라이언트가 연결 끊어도, 서버는 다른 클라이언트를 받을 수 있게 종료하지 않는다. 
+
         // 한 클라이언트와 대화가 끝다면 다음 클라이언트와 대화를 한다.
         try (Socket socket = serverSocket.accept();
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));

@@ -12,14 +12,15 @@ public class Server0121 {
     // 소켓을 연결한 후에 꼭 클라이언트가 먼저 데이터를 보낼 필요는 없다.
     // 서버가 먼저 데이터를 보내도 된다.
     // 즉 읽고 쓰기 순서만 맞으면 누가 먼저 보내든지 상관없다.
-    try (Scanner keyboard = new Scanner(System.in);
-        ServerSocket serverSocket = new ServerSocket(8888)) {
+    // (보통은 클라이언트가 먼저 데이터를 보내는게 맞다) 
+    try (Scanner keyboard = new Scanner(System.in); // 입력을 받을 스캐너 준비 
+        ServerSocket serverSocket = new ServerSocket(8888)) { // 서버 소켓 준비 
 
       System.out.println("클라이언트의 연결을 기다리고 있음.");
 
-      try (Socket socket = serverSocket.accept();
-          OutputStream out = socket.getOutputStream();
-          InputStream in = socket.getInputStream()) {
+      try (Socket socket = serverSocket.accept(); // 클라이언트의 연결을 accept
+          OutputStream out = socket.getOutputStream(); // 출력도구 준비 
+          InputStream in = socket.getInputStream()) { //읽을도구 준비 
 
         System.out.println("대기열에서 클라이언트 정보를 꺼내 소켓을 생성하였음.");
         System.out.println("클라이언트와 통신할 입출력 스트림이 준비되었음.");

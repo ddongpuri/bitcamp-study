@@ -12,8 +12,9 @@ public class Exam0210 {
   public static void main(String[] args) throws Exception {
 
     // => URL 주소를 준비한다.
-    URL url = new URL("http://itempage3.auction.co.kr/DetailView.aspx?itemno=C204190906");
+    URL url = new URL("https://sports.news.naver.com/index");
 
+    // URLConnection
     // => URL 정보를 가지고 HTTP 요청을 수행할 객체를 얻는다.
     URLConnection con = url.openConnection();
 
@@ -21,8 +22,10 @@ public class Exam0210 {
     con.connect();
 
     // URL.openStream()을 사용하는 것 보다 이점?
-    // - 응답 헤더의 다양한 값을 추출할 수 있다.
+    // - 응답 헤더의 다양한 값을 상세하게 추출할 수 있다.
+    // URL.openStream()은 
     System.out.printf("Content-Type: %s\n", con.getContentType());
+    // 똑같음 System.out.printf("Content-Type: %s\n", con.getHeaderField("Content-Type"));
     System.out.printf("Content-Length: %d\n", con.getContentLength());
     System.out.printf("Content-Encoding: %s\n", con.getContentEncoding());
 

@@ -12,12 +12,14 @@ public class CalculatorServer {
 
     try (ServerSocket serverSocket = new ServerSocket(8888)) {
       System.out.println("서버 실행 중...");
+      // 클라이언트앱 실행 전 대기상태(대기열에 클라이언트 1도 없음)
 
       try (Socket socket = serverSocket.accept();
           BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
           PrintStream out = new PrintStream(socket.getOutputStream());) {
 
-        sendIntroMessage(out);
+        sendIntroMessage(out); // 인사말 클라이언트에게 보냄 
+        // 클라이언트의 연결이 들어오면 여기까지 득달같이 완료됨 
 
         while (true) {
           String request = in.readLine();

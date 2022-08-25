@@ -15,7 +15,7 @@ public class Server0130 {
 
       System.out.println("서버 실행!");
 
-      loop: while (true) {
+      loop: while (true) { // loop라벨을 달아줌 
         // 한 클라이언트와 대화가 끝다면 다음 클라이언트와 대화를 한다.
         try (Socket socket = serverSocket.accept();
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -32,7 +32,7 @@ public class Server0130 {
             } else if (name.equalsIgnoreCase("stop")) { // 서버 종료하기
               out.println("Goodbye!");
               out.flush();
-              break loop;
+              break loop; // 무한루프 도는 while을 나갈 수 있음 
             }
 
             out.printf("%s 님 반갑습니다!\n", name);

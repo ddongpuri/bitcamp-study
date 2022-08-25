@@ -18,9 +18,11 @@ public class Exam0110 {
 
     // => 서버와 연결하고 HTTP 요청을 수행한다.
     // => 그런 후에 웹서버의 응답 데이터를 읽어들일 도구를 준비한다.
-    InputStream in = url.openStream();
+    InputStream in = url.openStream(); // 스트림 열어~ == 연결하세용 
+    // 바이트스트림 리턴 
 
     // => 서버가 보낸 데이터를 한 줄씩 읽기 위해 데코레이터를 붙인다.
+    //bufferedReader는 character 읽는 애라서 InputStreamReader에  바로 사용 불가 
     BufferedReader in2 = new BufferedReader(new InputStreamReader(in));
 
     while (true) {

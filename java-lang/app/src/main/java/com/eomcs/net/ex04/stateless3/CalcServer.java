@@ -18,6 +18,8 @@ public class CalcServer {
 
   // 클라이언트와 대화하는 부분을 별도의 코드로 분리하여 실행한다.
   static class RequestHandler extends Thread {
+    // 메인 실행 흐름이 아닌, 분리되어서 별도로 동시에 실행해야할 코드가 있다면,
+    // 스레드를 상속받은 후, run() 메서드 안에 코드를 두자.
 
     Socket socket;
 
@@ -66,7 +68,7 @@ public class CalcServer {
             result *= value;
             break;
           case "/":
-            Thread.sleep(10000);
+            Thread.sleep(30000);
             result /= value;
             break;
         }
@@ -98,12 +100,13 @@ public class CalcServer {
 
     while (true) {
       System.out.println("클라이언트의 연결을 기다림!");
-      Socket socket = ss.accept();
+      Socket socket = ss.accept(); // 승인 
       InetSocketAddress remoteAddr = (InetSocketAddress) socket.getRemoteSocketAddress();
       System.out.printf("클라이언트(%s:%d)가 연결되었음!\n", //
           remoteAddr.getAddress(), remoteAddr.getPort());
 
       // 독립적으로 수행할 코드를 갖고 있는 스레드 객체를 생성한다.
+      // 스레드에 socket을 넘겨준다. 
       RequestHandler requestHandler = new RequestHandler(socket);
 
       // 그리고 작업을 실행시킨다.

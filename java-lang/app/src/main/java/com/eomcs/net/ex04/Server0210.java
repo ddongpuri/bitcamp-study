@@ -1,4 +1,6 @@
 // 통신 방식 - Stateless
+// 연결 - 요청 - 응답  - 끊기 
+
 package com.eomcs.net.ex04;
 
 import java.io.BufferedReader;
@@ -15,9 +17,11 @@ public class Server0210 {
 
 
       loop: while (true) {
-        // 한 번 클라이언트와 연결되면
-        // 요청을 받아서 처리한 후 응답하고
+
+        // 한 번 클라이언트와 연결된 후 
+        // 요청을 받아서 응답하면 
         // 바로 연결을 끊는다.
+
         try (Socket socket = serverSocket.accept();
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             PrintWriter out = new PrintWriter(socket.getOutputStream())) {

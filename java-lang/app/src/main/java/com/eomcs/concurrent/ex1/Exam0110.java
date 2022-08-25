@@ -9,11 +9,11 @@ public class Exam0110 {
     // 작업이 완료할 때까지 다음 줄로 가지 않는다.
     for (int i = 0; i < 1000; i++) {
       System.out.println("==> " + i);
-    }
+    } // 위에 작성된 for문을 모두 끝낸 뒤에 
 
     for (int i = 0; i < 1000; i++) {
       System.out.println(">>> " + i);
-    }
+    } // 그 다음의 for문을 실행한다. 
   }
 }
 

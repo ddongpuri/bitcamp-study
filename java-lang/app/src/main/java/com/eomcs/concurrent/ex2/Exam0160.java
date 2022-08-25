@@ -9,7 +9,7 @@ public class Exam0160 {
     ThreadGroup systemGroup = mainGroup.getParent();
 
     ThreadGroup[] groups = new ThreadGroup[100];
-    int count = systemGroup.enumerate(groups, false);
+    int count = systemGroup.enumerate(groups, false); // 직계 자식그룹만 알아내자 
 
     System.out.println("system 스레드 그룹의 자식 그룹들:");
     for (int i = 0; i < count; i++) {

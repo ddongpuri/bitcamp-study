@@ -14,7 +14,8 @@ public class Exam0120 {
       // 기존 실행 흐름과 분리하여 따로 실행시킬 코드를
       // 이 메서드에 둔다.
       for (int i = 0; i < 1000; i++) {
-        System.out.println("==> " + i);
+        //        System.out.println("==> " + i);
+        System.out.println("OOO MAIN");
       }
     }
   }
@@ -27,7 +28,8 @@ public class Exam0120 {
     new MyThread().start();
 
     for (int i = 0; i < 1000; i++) {
-      System.out.println(">>> " + i);
+      System.out.println("XXX THREAD");
+      //      System.out.println(">>> " + i);
     }
   }
 
