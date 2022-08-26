@@ -38,8 +38,9 @@ public class Exam0310 {
   // - 한 번에 한 스레드만 진입 가능!
   static void print3(String threadName, Counter counter) {
     System.out.printf("[%s] 출력 시작 ----------\n", threadName);
+    //여기까지는 다른 스레드도 들어올 수 있음 !
 
-    synchronized (counter) {
+    synchronized (counter) { // 여러 스레드가 동시에 접근해서는 안되는 객체를 ()안에 적어준다.  
       System.out.printf("[%s] $$$$$$$$$$$$$$$$$$$$$$\n", threadName);
       for (int i  = 0; i < 1000; i++) {
         System.out.printf("%s ==> %d\n", threadName, i);
@@ -66,9 +67,9 @@ public class Exam0310 {
   public static void main(String[] args) throws Exception {
     Counter counter = new Counter(1000);
 
-    Worker w1 = new Worker("홍길동", counter);
-    Worker w2 = new Worker("%%%%%%%", counter);
-    Worker w3 = new Worker("kim", counter);
+    Worker w1 = new Worker("****홍길동", counter);
+    Worker w2 = new Worker("임꺽정----->", counter);
+    Worker w3 = new Worker("유%%관%%순", counter);
 
     w1.start();
     w2.start();

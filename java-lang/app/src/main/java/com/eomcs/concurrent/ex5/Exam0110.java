@@ -18,7 +18,9 @@ public class Exam0110 {
       }
       delay();
       values[size] = value;
-      delay();
+      delay(); 
+      // 여기서 cpu를 OS에 빼앗기면 size를 증가시키지 못함.
+      // -> 다음 작업이 값을 덮어씀 
       size = size + 1;
       delay();
     }

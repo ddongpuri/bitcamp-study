@@ -31,7 +31,7 @@ public class Exam0110 {
       }
     }.start();
 
-    System.out.println("스레드 실행 후");
+    System.out.println("스레드 실행 후 : 메인스레드 종료 ");
     // main() 메서드의 호출이 끝나더라도 다른 스레드의 실행이 종료될 때까지 
     // JVM은 종료하지 않는다.
   }
