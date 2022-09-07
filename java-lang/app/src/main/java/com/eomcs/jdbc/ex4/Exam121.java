@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Exam0120 {
+public class Exam121 {
 
   public static void main(String[] args) throws Exception {
     String title = null;

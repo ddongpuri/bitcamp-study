@@ -33,6 +33,8 @@ public class Exam0110 {
       //
       int count = stmt.executeUpdate( 
           "insert into x_board(title, contents) values('" + title + "','" + contents + "')");
+      // "insert into x_board(title, contents) values('" + aaaa + "','" + bbbb'), ('haha', 'hoho'), ('hehe', 'puhul + "')");
+
 
       // 위에서 사용자가 입력한 값을 가지고 SQL 문장을 만들면 다음과 같다.
       //

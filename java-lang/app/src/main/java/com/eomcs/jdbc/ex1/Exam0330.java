@@ -23,6 +23,7 @@ public class Exam0330 {
             rs.getString("contents"), 
             rs.getDate("created_date"), 
             rs.getInt("view_count")); 
+        // 컬럼명을 명시하는 방식을 추천 
 
         // getXxx(컬럼명):
         // => 컬럼의 번호를 지정하는 방식은 소스 코드를 읽을 때 매우 불편하다.

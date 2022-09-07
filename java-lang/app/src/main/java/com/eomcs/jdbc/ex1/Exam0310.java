@@ -9,6 +9,7 @@ public class Exam0310 {
 
     try (java.sql.Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
+        // 리턴받은 객체를 변수에 저장 
 
         // java.sql.Statement 구현 객체를 얻는다.
         // - SQL문을 DBMS의 형식에 따라 인코딩하여 서버에 전달하는 일을 하는 객체.
@@ -20,7 +21,7 @@ public class Exam0310 {
       // Statement 객체 사용법:
       //
       // 1) INSERT/UPDATE/DELETE 등 DML 관련 SQL문 전송
-      // => executeUpdate()
+      // => executeUpdate() == 데이터베이스를 변경하겠다!!! 는 의미이지, SQL UPDATE가 아님 
       // => 리턴값: 변경(insert/update/delete)된 데이터의 개수
       //
       // 2) SELECT 등 DQL 관련 SQL문 전송
@@ -34,7 +35,7 @@ public class Exam0310 {
       // => select처럼 data를 조회하는 sql 명령을 말한다.
       //
       int count = stmt.executeUpdate(
-          "insert into x_board(title,contents) values('제목10','내용')");
+          "insert into x_board(title,contents) values('제목10','내용')"); // 명령창에 SQL 입력하는게 아니기 때문에 ; 안써줌 
       System.out.printf("%d 개 입력 성공!", count);
     }
   }

@@ -18,7 +18,7 @@ import java.util.Scanner;
 // 번호? 100
 // 해당 번호의 게시물이 존재하지 않습니다.
 // ----------------------------
-public class Exam0130 {
+public class Exam131 {
 
   public static void main(String[] args) throws Exception {
     String no = null;
@@ -27,8 +27,9 @@ public class Exam0130 {
       no = keyScan.nextLine();
     }
 
-    try (Connection con = DriverManager.getConnection( 
-        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
+    try (
+        Connection con = DriverManager.getConnection( 
+            "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery( //
             "select * from x_board where board_id = " + no)) {

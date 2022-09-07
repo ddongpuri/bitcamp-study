@@ -19,6 +19,9 @@ public class Exam0360 {
       int count = stmt.executeUpdate(
           "delete from x_board where board_id = 7");
       System.out.printf("%d 개 삭제 성공!", count);
+
+      // 이거 두 번 실행하면 삭제될 7번이 없어서 
+      // 두 번 째의 리턴 값은 0이 나온다. 
     }
   }
 }

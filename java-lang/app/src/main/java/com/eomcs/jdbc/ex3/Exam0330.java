@@ -21,7 +21,7 @@ public class Exam0330 {
         PreparedStatement stmt = con.prepareStatement(
             "select * from x_board where board_id = ?")) {
 
-      stmt.setString(1, no);
+      stmt.setString(1, no); // try with resource에는 closeable 객체만 올수 있어용
 
       try (ResultSet rs = stmt.executeQuery()) {
         if (rs.next()) {

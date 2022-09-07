@@ -13,9 +13,10 @@ import java.sql.Statement;
 // 2, aaa, 2019-1-1, 2
 // 1, bbb, 2018-12-31, 3
 // ----------------------------
-public class Exam0120 {
+public class Exam121 {
 
   public static void main(String[] args) throws Exception {
+
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
         Statement stmt = con.createStatement();
