@@ -1,41 +1,45 @@
 package com.eomcs.algorithm;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.Stack;
 
-public class Main {
-  public static void main (String[] args) throws Exception {
-
+public class Main { // 폭발 문자열 
+  public static void main(String[] args) throws IOException {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    int n = Integer.parseInt(br.readLine());
-    StringTokenizer stk = new StringTokenizer(br.readLine(), " ");
+    StringBuilder sb = new StringBuilder();
 
+    String str = br.readLine(); // 문자열 
+    String bomb = br.readLine(); // 폭발 문자열 
 
-    int[] numbers = new int[n];
+    Stack<Character> stack = new Stack<>(); 
 
-    ArrayList<Integer> list = new ArrayList<>(); 
+    for (int i = 0; i < str.length(); i++) {
+      stack.push(str.charAt(i)); // 문자열 글자 하나씩 넣기 
 
-    for (int i = 0; i < n; i++) {
-      numbers[i] = Integer.parseInt(stk.nextToken());
-    }
+      if (stack.size() >= bomb.length()) { // 스택에 쌓인 문자 개수 >= 폭발 문자열의 길이 
+        boolean isSame = true;
 
-    for (int number : numbers) {
-      if(!list.contains(number)) {
-        list.add(number);
+        for (int j = 0; j < bomb.length(); j++) {
+          if (stack.get(stack.size() - bomb.length() + j) != bomb.charAt(j)) {
+            isSame = false;
+            break;
+          }
+        }
+
+        if (isSame) {
+          for (int j = 0; j < bomb.length(); j++)
+            stack.pop();
+        }
       }
     }
 
-    list.sort(null);
+    for (char ch : stack)
+      sb.append(ch);
 
-    for (int num : list) {
-      System.out.printf("%d ",num);
-    }
-    br.close();
+    System.out.println(sb.length() > 0 ? sb.toString() : "FRULA");
   }
 }
-
-
 
 

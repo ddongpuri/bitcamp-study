@@ -5,7 +5,7 @@ import com.bitcamp.board.domain.Board;
 
 public interface BoardDao {
 
-  int insert(Board board) throws Exception; 
+  int insert(Board board) throws Exception;
 
   Board findByNo(int no) throws Exception;
 
@@ -13,9 +13,8 @@ public interface BoardDao {
 
   int delete(int no) throws Exception;
 
-  List<Board> findAll() throws Exception; 
+  List<Board> findAll() throws Exception;
 }
-
 
 
 
