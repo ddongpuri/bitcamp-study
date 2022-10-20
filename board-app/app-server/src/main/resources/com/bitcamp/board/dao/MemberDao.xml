@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bitcamp.board.dao.MemberDao">
+
+  <!-- resultMap : 자바 객체의 프로퍼티와 컬럼 이름을 연결한다.  -->
+  <!-- PK 의 경우 태그명을 id로 줘야한다.  -->
+  <resultMap type="member" id="memberMap">
+    <id column="mno" property="no"/>
+    <result column="name" property="name"/>
+    <result column="email" property="email"/>
+    <result column="cdt" property="createdDate"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="member">
+    insert into app_member(name,email,pwd) 
+    values(#{name},#{email},sha2(#{password},256))
+  </insert>
+  
+  <select id="findByNo" resultMap="memberMap">
+    select 
+      mno,
+      name,
+      email,
+      cdt
+    from 
+      app_member 
+    where 
+      mno=#{value}
+  </select>
+  
+  <update id="update" parameterType="member">
+    update 
+      app_member 
+    set 
+      name=#{name}, 
+      email=#{email}, 
+      pwd=sha2(#{password},256) 
+    where mno=#{no}
+  </update>
+  
+  <delete id="delete">
+    delete from app_member
+    where mno=#{value}
+  </delete>
+  
+  <select id="findAll" resultMap="memberMap">
+  <!-- 우리는 각각 낱개의 데이터를 담을 Type만 지정하면 된다. List 지정하면 안된다. -->
+    select 
+      mno,
+      name,
+      email 
+    from 
+      app_member 
+    order by 
+      name
+  </select>
+
+  <select id="findByEmailPassword" resultMap="memberMap">
+    select 
+      mno, <!-- alias 설정 시, as 는 생략이 가능하다.  -->
+      name,
+      email,
+      cdt
+    from 
+      app_member 
+    where 
+      email=#{email} and pwd=sha2(#{password},256) <!-- email이라고 넘어온 값, password라고 넘어온 값 넣어줌 -->
+  </select>
+  
+</mapper>
