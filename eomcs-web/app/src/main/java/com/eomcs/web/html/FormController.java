@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-@RestController
+@RestController // return값을 화면에 바로 뿌려줌 
 public class FormController {
 
   @Autowired
@@ -47,7 +47,7 @@ public class FormController {
   }
 
   @RequestMapping("/html/form/exam12")
-  public Object exam12(String name, int age, MultipartFile[] photo) {
+  public Object exam12(String name, int age, MultipartFile[] photo) { // 여러개 : 배열로 받기 
     System.out.println(name);
     System.out.println(age);
 

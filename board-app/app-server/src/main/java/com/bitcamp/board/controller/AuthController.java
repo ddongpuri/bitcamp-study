@@ -59,7 +59,7 @@ public class AuthController {
     ModelAndView mv = new ModelAndView("auth/loginResult");
     mv.addObject("member", member);
     return mv;
-  }  
+  }
 
   @GetMapping("logout")
   public String logout(HttpSession session) throws Exception {

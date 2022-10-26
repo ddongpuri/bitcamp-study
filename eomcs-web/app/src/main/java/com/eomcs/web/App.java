@@ -15,6 +15,7 @@ public class App {
 
   @RequestMapping("/hello")
   String hello() {
+    System.out.println("서버시작!");
     return "Hello World!";
   }
 
