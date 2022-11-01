@@ -21,9 +21,9 @@ var tag1 = document.getElementById("btn1");
 
 tag1.onclick = function() {
   // 서버에 요청
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", "/javascript/ex00/exam06", false);
-  xhr.send();
+  var xhr = new XMLHttpRequest(); // 서버에게 요청을 할 때 사용하는 도구 (최근에는 fetch 사용)
+  xhr.open("GET", "/javascript/ex00/exam06", false); // 연결
+  xhr.send(); // 요청 
 
   // 서버가 보낸 데이터를 div 태그에 넣기
   var tag2 = document.getElementById("d1");

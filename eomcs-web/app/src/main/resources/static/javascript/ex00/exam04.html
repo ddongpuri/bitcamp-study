@@ -15,15 +15,24 @@ var obj1 = new Object(); // => HashMap<String,Object> obj1 = new HashMap<>();
 obj1.name = "홍길동"; // => obj1.put("name", "홍길동");
 obj1.age = 20; // => obj1.put("age", 20);
 obj1.working = true; // => obj1.put("working", true);
+
+// 익명함수 
 obj1.hello = function() {
-  console.log("안녕하세요, " + this.name + "님!");
+  console.log("안녕하세요, " + this.name + "님!"); // this = 함수가 소속된 객체를 가리킨다. (여기서는 obj)
 }; // => obj1.put("hello", 함수);
 
+obj1.bye = function() {
+	console.log("잘가요, " + this.name + "님!");
+};
+
 console.log(obj1);
+console.log(obj1.name);
 obj1.hello(); // obj1.get("hello")();
+obj1.bye();
 
 // 자바스크립트 객체 정의 단축 표기법
 // => JavaScript Object Notation(JSON) 데이터 포맷의 근원이다.
+
 var obj2 = {
     name:"임꺽정",
     age:30,
